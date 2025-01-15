@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Scroll Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color:#212121;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 80%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-slider {
+            display: flex;
+            transition: transform 1s ease;
+            width: 400%; /* 100% for each product */
+        }
+
+        .product {
+            flex: 0 0 100%;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 10px;
+            transition: transform 1s ease;
+        }
+
+        .product img {
+            max-width: 50%;
+            border-radius: 5px;
+        }
+
+        .product h2 {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .product p {
+            font-size: 16px;
+            color: #555;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="product-container">
+    <div class="product-slider" id="productSlider">
+        <div class="product">
+            <img src="im.png" alt="Product 1">
+            <h2 style="color: rebeccapurple;">Product 1</h2>
+            <p>this is my first product can you guess it </p>
+        </div>
+        <div class="product">
+            <img src="im2.png" alt="Product 2">
+            <h2 style="color: rebeccapurple;">Product 2</h2>
+            <p style="color: darkblue">can you tell me about this .</p>
+        </div>
+        <div class="product">
+            <img src="im4.png" alt="Product 3">
+            <h2 style="color: rebeccapurple;">Product 3</h2>
+            <p style="color: darkblue">Short description of product 3.</p>
+        </div>
+        <div class="product">
+            <img src="imi3.png" alt="Product 4">
+            <h2>Product 4</h2>
+            <p style="color: darkblue">Short description of product 4.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentIndex = 0;
+    const productSlider = document.getElementById('productSlider');
+    const totalProducts = document.querySelectorAll('.product').length;
+
+    function scrollProducts() {
+        currentIndex = (currentIndex + 1) % totalProducts; // Loop back to the first product after last
+        productSlider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Scroll every 3 seconds
+    setInterval(scrollProducts, 3000);
+</script>
+
+</body>
+</html>
